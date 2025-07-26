@@ -1,0 +1,39 @@
+﻿@model List<model1.Models.Carte>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<form method="get" asp-action="Index">
+    <input type="text" name="numeAutor" placeholder="Nume autor" value="@ViewData["NumeAutor"]" />
+    <button type="submit">Caută</button>
+</form>
+
+<a href="/Carte/Create">Adaugă carte nouă</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Titlu</th>
+            <th>ISBN</th>
+            <th>Gen</th>
+            <th>Autor</th>
+            <th>Acțiuni</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var c in Model)
+        {
+            <tr>
+                <td>@c.Titlu</td>
+                <td>@c.ISBN</td>
+                <td>@c.Gen</td>
+                <td>@c.Autor?.Nume</td>
+                <td>
+                    <a asp-controller="Carte" asp-action="Edit" asp-route-id="@c.Id">Editează</a> |
+                    <a asp-controller="Carte" asp-action="Delete" asp-route-id="@c.Id">Șterge</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

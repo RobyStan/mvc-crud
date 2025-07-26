@@ -1,0 +1,18 @@
+﻿@model model1.Models.Carte
+
+<h2>Șterge comanda</h2>
+
+<h3>Ești sigur că vrei să ștergi comanda:</h3>
+
+<div>
+    <strong>Titlu::</strong> @Model.Titlu <br />
+    <strong>ISBN:</strong> @Model.ISBN <br />
+    <strong>Gen:</strong> @Model.Gen <br />
+    <strong>Autor:</strong> @Model.Autor?.Nume
+</div>
+
+<form asp-action="Delete" method="post" onsubmit="return confirm('Ești sigur că vrei să ștergi acest concurent?');">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Șterge</button>
+    <a asp-action="Index" class="btn btn-secondary">Anulează</a>
+</form>

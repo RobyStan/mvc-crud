@@ -1,0 +1,31 @@
+﻿@model model1.Models.Carte
+
+<h2> Adauga carte</h2>
+
+<form asp-action="Create" method="post">
+    <label asp-for="Titlu"></label>
+    <input asp-for="Titlu" />
+    <span asp-validation-for="Titlu"></span>
+    <br />
+    <label asp-for="ISBN"></label>
+    <input asp-for="ISBN" />
+    <span asp-validation-for="ISBN"></span>
+    <br />
+    <label asp-for="Gen"></label>
+    <input asp-for="Gen" />
+    <span asp-validation-for="Gen"></span>
+    <br />
+
+    <label asp-for="AutorId"></label>
+    <select asp-for="AutorId" asp-items="ViewBag.AutorId">
+        <option value="">-- Alege Client --</option>
+    </select>
+    <span asp-validation-for="AutorId"></span>
+    <br /><br />
+
+    <button type="submit">Salvează</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
